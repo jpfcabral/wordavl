@@ -1,5 +1,5 @@
-from bst import BST
-from bst import Node
+from wordavl.structures.bst import BST
+from wordavl.structures.bst import Node
 
 
 class AVLNode(Node):
