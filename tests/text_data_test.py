@@ -30,6 +30,52 @@ def test_read_local_file(tmp_path):
     assert text_data.raw_data == "Test file content"
 
 
-def test_init_with_invalid_source():
-    with pytest.raises(FileNotFoundError):
-        TextData("invalid_source")
+@pytest.fixture
+def text_data_instance():
+    # Create an instance of TextData for testing
+    text = "This is a test text."
+    return TextData(text)
+
+
+def test_get_word_list_with_simple_text(text_data_instance):
+    # Test with a simple sentence
+    expected_words = ["This", "is", "a", "test", "text"]
+    assert text_data_instance.get_word_list() == expected_words
+
+
+def test_get_word_list_with_complex_text(text_data_instance):
+    # Test with a sentence containing punctuation and numbers
+    text_data_instance.raw_data = "Hello, world! This is a sample text with 123 numbers."
+    expected_words = [
+        "Hello",
+        "world",
+        "This",
+        "is",
+        "a",
+        "sample",
+        "text",
+        "with",
+        "123",
+        "numbers",
+    ]
+    assert text_data_instance.get_word_list() == expected_words
+
+
+def test_get_word_list_with_empty_text():
+    # Test with empty text
+    text_data_instance = TextData("")
+    assert text_data_instance.get_word_list() == []
+
+
+def test_get_word_list_with_special_characters(text_data_instance):
+    # Test with text containing special characters
+    text_data_instance.raw_data = "Hello, world! How are you today? #@$"
+    expected_words = ["Hello", "world", "How", "are", "you", "today"]
+    assert text_data_instance.get_word_list() == expected_words
+
+
+def test_get_word_list_with_multiline_text(text_data_instance):
+    # Test with text containing newline characters
+    text_data_instance.raw_data = "This is a\nmultiline\nsentence."
+    expected_words = ["This", "is", "a", "multiline", "sentence"]
+    assert text_data_instance.get_word_list() == expected_words

@@ -1,3 +1,5 @@
+import re
+
 import requests
 
 
@@ -23,10 +25,17 @@ class TextData:
         Returns:
             str: The content of the text data.
         """
+
+        if not source:
+            return ""
+
         if source.startswith("http://") or source.startswith("https://"):
             return self._read_from_link(source=source)
 
-        return self._read_local_file(source=source)
+        if source.split(".")[-1] in ["txt"]:
+            return self._read_local_file(source=source)
+
+        return source
 
     def _read_from_link(self, source: str):
         """
@@ -56,3 +65,14 @@ class TextData:
         with open(source) as f:
             content = f.read()
         return content
+
+    def get_word_list(self):
+        """
+        Separate a text into individual words.
+
+        Returns:
+            list: A list containing individual words extracted from the raw data.
+        """
+        # Use regular expression to find all words in the text
+        words = re.findall(r"\b\w+\b", self.raw_data)
+        return words
