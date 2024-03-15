@@ -4,7 +4,7 @@ from wordavl.structures.avl import AVLTree
 from wordavl.text_data import TextData
 
 
-class WordAVL:
+class WordAVL(AVLTree):
     def __init__(self, corpus="", verbose=False) -> None:
         """
         Initialize a WordAVL object.
@@ -13,9 +13,9 @@ class WordAVL:
             corpus (str, optional): A string representing the corpus of words. Defaults to "".
             verbose (bool, optional): Whether to print verbose logging information. Defaults to False.
         """
+        super().__init__()
         self.corpus = corpus
         self.verbose = verbose
-        self.avl_tree = AVLTree()
 
     def read_corpus(self, text_source: str) -> None:
         """
@@ -34,6 +34,6 @@ class WordAVL:
         logger.info(f"Initializing AVL population for corpus with length: {len(self.corpus)}")
 
         for word in self.corpus:
-            self.avl_tree.add(word)
+            self.add(word)
 
-        logger.info(f"AVL population completed with height: {self.avl_tree.get_height()}")
+        logger.info(f"AVL population completed with height: {self.get_height()}")
