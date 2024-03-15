@@ -76,3 +76,14 @@ class TextData:
         # Use regular expression to find all words in the text
         words = re.findall(r"\b\w+\b", self.raw_data)
         return words
+
+    def get_unique_words(self):
+        """
+        Get unique words from the raw data.
+
+        Returns:
+            list: A list containing unique words extracted from the raw data.
+        """
+        word_list = self.get_word_list()
+        unique_words = list(set(word_list))
+        return unique_words

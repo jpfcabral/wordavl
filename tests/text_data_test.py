@@ -79,3 +79,41 @@ def test_get_word_list_with_multiline_text(text_data_instance):
     text_data_instance.raw_data = "This is a\nmultiline\nsentence."
     expected_words = ["This", "is", "a", "multiline", "sentence"]
     assert text_data_instance.get_word_list() == expected_words
+
+
+def test_get_unique_words_with_complex_text(text_data_instance):
+    # Test with a sentence containing punctuation and numbers
+    text_data_instance.raw_data = "Hello, world! This is a sample text with 123 numbers."
+    expected_unique_words = [
+        "Hello",
+        "world",
+        "This",
+        "is",
+        "a",
+        "sample",
+        "text",
+        "with",
+        "123",
+        "numbers",
+    ]
+    assert set(text_data_instance.get_unique_words()) == set(expected_unique_words)
+
+
+def test_get_unique_words_with_empty_text():
+    # Test with empty text
+    text_data_instance = TextData("")
+    assert set(text_data_instance.get_unique_words()) == set()
+
+
+def test_get_unique_words_with_special_characters(text_data_instance):
+    # Test with text containing special characters
+    text_data_instance.raw_data = "Hello, world! How are you today? #@$"
+    expected_unique_words = ["Hello", "world", "How", "are", "you", "today"]
+    assert set(text_data_instance.get_unique_words()) == set(expected_unique_words)
+
+
+def test_get_unique_words_with_multiline_text(text_data_instance):
+    # Test with text containing newline characters
+    text_data_instance.raw_data = "This is a\nmultiline\nsentence."
+    expected_unique_words = ["This", "is", "a", "multiline", "sentence"]
+    assert set(text_data_instance.get_unique_words()) == set(expected_unique_words)
