@@ -1,3 +1,5 @@
+from time import time
+
 from loguru import logger
 
 from wordavl.structures.avl import AVLNode
@@ -32,12 +34,15 @@ class WordAVL(AVLTree):
         """
         Train the AVL tree with the corpus.
         """
-        logger.info(f"Initializing AVL population for corpus with length: {len(self.corpus)}")
+        logger.debug(f"Initializing AVL population for corpus with length: {len(self.corpus)}")
+        start_time = time()
 
         for word in self.corpus:
             self.add(word)
 
-        logger.info(f"AVL population completed with height: {self.get_height()}")
+        logger.debug(
+            f"AVL population completed with height: {self.get_height()} and took: {round(time()-start_time, 5)}s"
+        )
 
     def autocomplete(self, prefix: str):
         """
@@ -65,10 +70,18 @@ class WordAVL(AVLTree):
         Returns:
             list: A list containing all elements in the AVL tree with the given prefix.
         """
+        logger.debug(
+            f"Start search for words with the given prefix '{prefix}' in pre-loaded corpus"
+        )
+        start_time = time()
         results = list()
 
         for word in self._find_recursive(self.root, prefix):
             results.append(word)
+
+        logger.debug(
+            f"Search for prefix '{prefix}' took {round(time()-start_time, 5)}s and found {len(results)} results"
+        )
 
         return results
 
