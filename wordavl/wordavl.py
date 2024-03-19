@@ -93,11 +93,12 @@ class WordAVL(AVLTree):
         # Check if the current node value starts with the prefix
         if current_node is not None and current_node.value.startswith(prefix):
             yield current_node.value
-
+            yield from self._find_recursive(current_node.right_child, prefix)
+            yield from self._find_recursive(current_node.left_child, prefix)
         # Recursively search in the left subtree
-        if current_node is not None:
+        elif current_node is not None and prefix < current_node.value:
             yield from self._find_recursive(current_node.left_child, prefix)
 
         # Recursively search in the right subtree
-        if current_node is not None:
+        elif current_node is not None and prefix > current_node.value:
             yield from self._find_recursive(current_node.right_child, prefix)
