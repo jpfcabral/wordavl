@@ -4,6 +4,7 @@ from wordavl.word_list import WordList
 
 app = typer.Typer()
 
+
 # Function to create the appropriate word class based on the argument
 def create_word_class(word_class: str):
     if word_class.lower() == "avl":
@@ -17,6 +18,7 @@ def create_word_class(word_class: str):
         return word_list
     else:
         raise ValueError("Invalid word class. Choose 'avl' or 'list'.")
+
 
 # Command to search for words with a given prefix
 @app.command()
@@ -37,6 +39,7 @@ def search(word_class: str):
                 typer.echo("No words found with the given prefix.")
         else:
             typer.echo("Please provide a prefix.")
+
 
 if __name__ == "__main__":
     app()

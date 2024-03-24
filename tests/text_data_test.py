@@ -45,7 +45,9 @@ def test_get_word_list_with_simple_text(text_data_instance):
 
 def test_get_word_list_with_complex_text(text_data_instance):
     # Test with a sentence containing punctuation and numbers
-    text_data_instance.raw_data = "Hello, world! This is a sample text with 123 numbers."
+    text_data_instance.raw_data = (
+        "Hello, world! This is a sample text with 123 numbers."
+    )
     expected_words = [
         "Hello",
         "world",
@@ -83,7 +85,9 @@ def test_get_word_list_with_multiline_text(text_data_instance):
 
 def test_get_unique_words_with_complex_text(text_data_instance):
     # Test with a sentence containing punctuation and numbers
-    text_data_instance.raw_data = "Hello, world! This is a sample text with 123 numbers."
+    text_data_instance.raw_data = (
+        "Hello, world! This is a sample text with 123 numbers."
+    )
     expected_unique_words = [
         "Hello",
         "world",

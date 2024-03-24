@@ -34,7 +34,9 @@ class WordAVL(AVLTree):
         """
         Train the AVL tree with the corpus.
         """
-        logger.debug(f"Initializing AVL population for corpus with length: {len(self.corpus)}")
+        logger.debug(
+            f"Initializing AVL population for corpus with length: {len(self.corpus)}"
+        )
         start_time = time()
 
         for word in self.corpus:

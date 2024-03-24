@@ -73,7 +73,9 @@ class AVLTree(BST):
         """
         Overrides the add method in the BST class to handle AVL Tree balancing.
         """
-        self.root = self._add_recursive(self.root, value)  # Note that self.root is updated here
+        self.root = self._add_recursive(
+            self.root, value
+        )  # Note that self.root is updated here
 
     def _add_recursive(self, current_node, value):
         """
@@ -111,9 +113,13 @@ class AVLTree(BST):
 
         # Determine whether the value should be inserted to the left or right subtree
         if value <= current_node.value:
-            current_node.left_child = self._add_recursive(current_node.left_child, value)
+            current_node.left_child = self._add_recursive(
+                current_node.left_child, value
+            )
         else:
-            current_node.right_child = self._add_recursive(current_node.right_child, value)
+            current_node.right_child = self._add_recursive(
+                current_node.right_child, value
+            )
 
         # Update the height and imbalance factor for the current node
         current_node.calculate_height_and_imbalance()

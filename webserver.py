@@ -4,6 +4,7 @@ from wordavl.wordavl import WordAVL
 # Global variable to store the AVL tree
 avltree = None
 
+
 # Function to create AVL tree and initialize it with corpus
 def create_avl_tree():
     global avltree
@@ -11,9 +12,11 @@ def create_avl_tree():
     avltree.read_corpus("assets/br-utf8.txt")
     avltree.train()
 
+
 # Check if AVL tree has been initialized, if not, create it
 if avltree is None:
     create_avl_tree()
+
 
 # Streamlit UI
 def main():
@@ -31,6 +34,7 @@ def main():
                 st.write(word)
         else:
             st.warning("Please enter a prefix.")
+
 
 if __name__ == "__main__":
     main()
