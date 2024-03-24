@@ -25,8 +25,15 @@ class WordList:
         Args:
             text_source (str): The source of the text data (file path or URL).
         """
+        logger.debug("Initializing list population for corpus")
+        start_time = time()
+
         text_data = TextData(source=text_source)
         self.corpus = text_data.get_unique_words()
+
+        logger.debug(
+            f"List population completed with {len(self.corpus)} elements and took: {round(time()-start_time, 5)}s"
+        )
 
     def autocomplete(self, prefix: str):
 
@@ -36,7 +43,9 @@ class WordList:
         for word in self._find_recursive(prefix=prefix):
             results.append(word)
 
-        logger.info(f"List search took {round(time()-start_time, 5)}s")
+        logger.debug(
+            f"List search took {round(time()-start_time, 5)}s and found {len(results)} results"
+        )
         return results
 
     def _find_recursive(self, prefix: str):
