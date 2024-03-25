@@ -4,6 +4,8 @@ Course: DCA0209
 
 Student: João Pedro Freire Cabral
 
+Repository link: https://github.com/jpfcabral/wordavl
+
 
 ## Introduction
 
@@ -11,7 +13,7 @@ This repository showcasing two fundamental data structures for prefix autocomple
 
 ## Corpus Loading
 
-One notable distinction between AVL trees and word lists lies in their structure-building process. AVL trees require more time and computational resources during construction compared to word lists. This disparity stems from the inherent complexity of maintaining balance within AVL trees, ensuring that they adhere to the self-balancing property. As a result, AVL tree construction involves additional overhead to perform rotations and adjustments, aiming to maintain the tree's balance. In contrast, word lists are relatively straightforward to build, involving the sequential insertion of words without the need for balancing operations. While AVL trees prioritize balanced structure for efficient search operations, word lists prioritize simplicity and ease of construction. In this repository, we provide actual performance values illustrating the time discrepancy between AVL tree and word list construction, offering insights into their respective efficiency in building structures tailored for prefix autocomplete functionality. The table below shows the average value for reading approximately 260,000 different words found in the [Portuguese dictionary](https://www.ime.usp.br/~pf/dicios/br-utf8.txt)
+One notable distinction between AVL trees and word lists lies in their structure-building process. AVL trees require more time and computational resources during construction compared to word lists. This disparity stems from the inherent complexity of maintaining balance within AVL trees, ensuring that they adhere to the self-balancing property. As a result, AVL tree construction involves additional overhead to perform rotations and adjustments, aiming to maintain the tree's balance. In contrast, word lists are relatively straightforward to build, involving the sequential insertion of words without the need for balancing operations. While AVL trees prioritize balanced structure for efficient search operations, word lists prioritize simplicity and ease of construction. In this repository, we provide actual performance values illustrating the time discrepancy between AVL tree and word list construction, offering insights into their respective efficiency in building structures tailored for prefix autocomplete functionality. The table below shows the median value for reading approximately 260,000 different words found in the [Portuguese dictionary](https://www.ime.usp.br/~pf/dicios/br-utf8.txt)
 
 | Data Structure | Median Time (Build Structure)     |
 |----------------|-----------------------------------|
