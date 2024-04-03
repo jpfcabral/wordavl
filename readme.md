@@ -33,7 +33,3 @@ The boxplot shows the big difference in prefix search times between the structur
 |----------------|-----------------------------------|
 | AVL Tree       | 0.000612 seconds |
 | Word List      | 0.040285 seconds |
-
-### Related Video
-
-https://youtu.be/Lg5qOG4kmkU
